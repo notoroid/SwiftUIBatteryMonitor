@@ -12,6 +12,11 @@ class Root : ObservableObject
 {
     @Published var batteries: [Battery]
     
+    func test() {
+        print("test. call")
+        
+    }
+    
     init() {
         let textColor = Color.white
         let gradStarColor = Color("GradStartColor")

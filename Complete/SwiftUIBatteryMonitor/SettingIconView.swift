@@ -10,9 +10,16 @@ import SwiftUI
 
 struct SettingIconView: View {
     var foregroundColor: Color
+    @State var toggleValue: Bool = true
     
     var body: some View {
         VStack(spacing: 0){
+            Toggle( isOn: self.$toggleValue) {
+                Text("Foo")
+                    .foregroundColor( Color.primary )
+                    .font(.largeTitle)
+            }.padding()
+
             HStack(spacing: 0){
                 Spacer()
                 Image(systemName: "gear")
@@ -21,6 +28,16 @@ struct SettingIconView: View {
                     .font(.largeTitle)
                     .padding(.top, 17)
                     .padding(.trailing, 17)
+                .gesture(
+                    TapGesture().onEnded{ _ in
+                        self.toggleValue.toggle()
+//                        print("tap!")
+                        
+                        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                        
+//                        appDelegate.
+                    }
+                )
             }
             Spacer()
         }
@@ -30,5 +47,6 @@ struct SettingIconView: View {
 struct SettingIconView_Previews: PreviewProvider {
     static var previews: some View {
         SettingIconView( foregroundColor: Color.white )
+            .background(Color.gray)
     }
 }

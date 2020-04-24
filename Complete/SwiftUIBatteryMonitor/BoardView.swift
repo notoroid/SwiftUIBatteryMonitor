@@ -41,9 +41,17 @@ struct BoardView_Previews: PreviewProvider {
     static var rootState = Root()
 
     static var previews: some View {
-        return BoardView(index: 1)
-            .background(Color.gray)
-            .environmentObject(rootState)
+        rootState.batteries[0].level = "1"
+        rootState.batteries[1].level = "2"
+        rootState.batteries[2].level = "3"
+        rootState.batteries[3].level = "4"
+        
+        return Group {
+            BoardView(index: 1)
+                .background(Color.gray)
+                .environmentObject(rootState)
+        }
     }
+    
 }
 #endif
